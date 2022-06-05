@@ -1,0 +1,37 @@
+Add-DnsServerPrimaryZone -NetworkID “192.168.10.0/24” -ReplicationScope “Domain”  -Confirm
+Add-DnsServerPrimaryZone -NetworkID “192.168.20.0/24” -ReplicationScope “Domain” -Confirm
+Add-DnsServerPrimaryZone -NetworkID “192.168.30.0/24” -ReplicationScope “Domain” -Confirm
+Add-DnsServerPrimaryZone -NetworkID “192.168.40.0/24” -ReplicationScope “Domain” -Confirm
+Add-DnsServerPrimaryZone -NetworkID “192.168.50.0/24” -ReplicationScope “Domain” -Confirm
+Add-DnsServerPrimaryZone -NetworkID “192.168.60.0/24” -ReplicationScope “Domain” -Confirm
+
+Add-DnsServerResourceRecordA -Name "01.D.DM" -ZoneName "a-inc.local" -IPv4Address "192.168.30.3" -CreatePtr -AllowUpdateAny
+Add-DnsServerResourceRecordA -Name "02.D.DM" -ZoneName "a-inc.local" -IPv4Address "192.168.30.4" -CreatePtr -AllowUpdateAny
+Add-DnsServerResourceRecordA -Name "01.W.DM" -ZoneName "a-inc.local" -IPv4Address "192.168.30.5" -CreatePtr -AllowUpdateAny
+Add-DnsServerResourceRecordA -Name "01.I.DM" -ZoneName "a-inc.local" -IPv4Address "192.168.30.6" -CreatePtr -AllowUpdateAny
+
+Add-DnsServerResourceRecordA -Name "01.D.DV" -ZoneName "a-inc.local" -IPv4Address "192.168.40.3" -CreatePtr -AllowUpdateAny
+Add-DnsServerResourceRecordA -Name "02.D.DV" -ZoneName "a-inc.local" -IPv4Address "192.168.40.4" -CreatePtr -AllowUpdateAny
+Add-DnsServerResourceRecordA -Name "01.W.DV" -ZoneName "a-inc.local" -IPv4Address "192.168.40.5" -CreatePtr -AllowUpdateAny
+Add-DnsServerResourceRecordA -Name "01.I.DV" -ZoneName "a-inc.local" -IPv4Address "192.168.40.6" -CreatePtr -AllowUpdateAny
+
+Add-DnsServerResourceRecordA -Name "01.D.DA" -ZoneName "a-inc.local" -IPv4Address "192.168.50.3" -CreatePtr -AllowUpdateAny
+Add-DnsServerResourceRecordA -Name "02.D.DA" -ZoneName "a-inc.local" -IPv4Address "192.168.50.4" -CreatePtr -AllowUpdateAny
+Add-DnsServerResourceRecordA -Name "01.W.DA" -ZoneName "a-inc.local" -IPv4Address "192.168.50.5" -CreatePtr -AllowUpdateAny
+Add-DnsServerResourceRecordA -Name "01.I.DA" -ZoneName "a-inc.local" -IPv4Address "192.168.50.6" -CreatePtr -AllowUpdateAny
+
+Add-DnsServerResourceRecordA -Name "01.D.DF" -ZoneName "a-inc.local" -IPv4Address "192.168.60.3" -CreatePtr -AllowUpdateAny
+Add-DnsServerResourceRecordA -Name "02.D.DF" -ZoneName "a-inc.local" -IPv4Address "192.168.60.4" -CreatePtr -AllowUpdateAny
+Add-DnsServerResourceRecordA -Name "01.W.DF" -ZoneName "a-inc.local" -IPv4Address "192.168.60.5" -CreatePtr -AllowUpdateAny
+Add-DnsServerResourceRecordA -Name "01.I.DF" -ZoneName "a-inc.local" -IPv4Address "192.168.60.6" -CreatePtr -AllowUpdateAny
+
+Add-DnsServerResourceRecordA -Name "DC1" -ZoneName "a-inc.local" -IPv4Address "192.168.20.3" -CreatePtr -AllowUpdateAny
+Add-DnsServerResourceRecordA -Name "DC2" -ZoneName "a-inc.local" -IPv4Address "192.168.20.4" -CreatePtr -AllowUpdateAny
+Add-DnsServerResourceRecordA -Name "www" -ZoneName "a-inc.local" -IPv4Address "192.168.20.5" -CreatePtr -AllowUpdateAny
+
+Add-DnsServerResourceRecordCName -Name "dns01" -HostNameAlias "dc1.a-inc.local" -ZoneName "a-inc.local"
+Add-DnsServerResourceRecordCName -Name "dns02" -HostNameAlias "dc2.a-inc.local" -ZoneName "a-inc.local"
+Add-DnsServerResourceRecordCName -Name "dm.impressora" -HostNameAlias "01.I.DM.a-inc.local" -ZoneName "a-inc.local"
+Add-DnsServerResourceRecordCName -Name "dv.impressora" -HostNameAlias "01.I.DV.a-inc.local" -ZoneName "a-inc.local"
+Add-DnsServerResourceRecordCName -Name "da.impressora" -HostNameAlias "01.I.DA.a-inc.local" -ZoneName "a-inc.local"
+Add-DnsServerResourceRecordCName -Name "df.impressora" -HostNameAlias "01.I.DF.a-inc.local" -ZoneName "a-inc.local"
